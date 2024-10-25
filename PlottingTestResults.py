@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-filepath = "Test Data/MaxRadiusTestData.csv" #set path to the csv file 
+filepath = "Test Data/MediumRadiusTestData.csv" #set path to the csv file 
 test_data = pd.read_csv(filepath)
 
 x_blue = np.array((test_data['Blue x Values']))
@@ -63,7 +63,6 @@ plt.grid(True)
 plt.axis('equal')
 plt.show()
 
-
 # Calculate magnitudes of velocities
 v_blue = np.sqrt(vx_blue**2 + vy_blue**2)
 v_red = np.sqrt(vx_red**2 + vy_red**2)
@@ -91,5 +90,47 @@ plt.xlabel('X Position (cm)')
 plt.ylabel('Acceleration Magnitude (cm/s²)')
 plt.title(f'Acceleration Magnitude over X Position with\nRadius of second mass: {radius_of_mass_2:.2f} cm')
 plt.legend()
+plt.grid(True)
+plt.show()
+
+# Convert from x and y coords to theta from vertical
+theta = np.arccos((y_blue-y_red)/np.sqrt((x_blue-x_red)**2+(y_blue-y_red)**2))
+
+# Slice theta arrays from index 13 to 33 to remove static points of experiment
+theta = theta[11:32]
+time_sliced = time[11:32]
+time_sliced = time_sliced-np.min(time_sliced)
+
+# Plot theta against time
+plt.figure(figsize=(10, 5))
+plt.plot(time_sliced, theta, 'b-')
+plt.ylim(-1*np.pi, 2*np.pi)  # Set y-axis range
+plt.xlabel('Time (s)')
+plt.ylabel(r'$\theta$ (radians)')
+plt.title(f'Angle $\\theta$ from the Vertical over Time with\nRadius of second mass: {radius_of_mass_2:.2f} cm')
+plt.grid(True)
+plt.show()
+
+# Calculate angular velocity omega
+omega = np.gradient(theta, time_sliced)
+
+# Plot angular velocity omega against time_sliced
+plt.figure(figsize=(10, 5))
+plt.plot(time_sliced, omega, 'r-')
+plt.xlabel('Time (s)')
+plt.ylabel(r'$\omega$ (rad/s)')
+plt.title(f'Angular Velocity $\omega$ over Time with\nRadius of second mass: {radius_of_mass_2:.2f} cm')
+plt.grid(True)
+plt.show()
+
+# Calculate angular acceleration alpha
+alpha = np.gradient(omega, time_sliced)
+
+# Plot angular acceleration alpha against time_sliced
+plt.figure(figsize=(10, 5))
+plt.plot(time_sliced, alpha, 'g-')
+plt.xlabel('Time (s)')
+plt.ylabel(r'$\alpha$ (rad/s²)')
+plt.title(f'Angular Acceleration $\\alpha$ over Time with\nRadius of second mass: {radius_of_mass_2:.2f} cm')
 plt.grid(True)
 plt.show()
