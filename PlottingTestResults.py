@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-filepath = "Test Data/MediumRadiusTestData.csv" #set path to the csv file 
+filepath = "Test Data/MediumRadiusTestData.csv"  # set path to the csv file
 test_data = pd.read_csv(filepath)
 
 x_blue = np.array((test_data['Blue x Values']))
@@ -21,7 +21,8 @@ plt.plot(x_blue, y_blue, 'bo-', label='Blue Dot Position')
 plt.plot(x_red, y_red, 'ro-', label='Red Dot Position')
 plt.xlabel('X Position (cm)')
 plt.ylabel('Y Position (cm)')
-plt.title(f'Positions of Blue and Red Dots with\nRadius of second mass: {radius_of_mass_2:.2f} cm')
+plt.title(
+    f'Positions of Blue and Red Dots with\nRadius of second mass: {radius_of_mass_2:.2f} cm')
 plt.legend()
 plt.grid(True)
 plt.axis('equal')
@@ -35,11 +36,14 @@ vy_red = np.gradient(y_red, time)
 
 # Plot velocities using quiver plot
 plt.figure(figsize=(10, 5))
-plt.quiver(x_blue, y_blue, vx_blue, vy_blue, color='b', label='Blue Dot Velocity', width=0.0035)
-plt.quiver(x_red, y_red, vx_red, vy_red, color='r', label='Red Dot Velocity', width=0.0035)
+plt.quiver(x_blue, y_blue, vx_blue, vy_blue, color='b',
+           label='Blue Dot Velocity', width=0.0035)
+plt.quiver(x_red, y_red, vx_red, vy_red, color='r',
+           label='Red Dot Velocity', width=0.0035)
 plt.xlabel('X Position (cm)')
 plt.ylabel('Y Position (cm)')
-plt.title(f'Velocities of Blue and Red Dots with\nRadius of second mass: {radius_of_mass_2:.2f} cm')
+plt.title(
+    f'Velocities of Blue and Red Dots with\nRadius of second mass: {radius_of_mass_2:.2f} cm')
 plt.legend()
 plt.grid(True)
 plt.axis('equal')
@@ -53,11 +57,14 @@ ay_red = np.gradient(vy_red, time)
 
 # Plot accelerations using quiver plot
 plt.figure(figsize=(10, 5))
-plt.quiver(x_blue, y_blue, ax_blue, ay_blue, color='b', label='Blue Dot Acceleration', width=0.0035)
-plt.quiver(x_red, y_red, ax_red, ay_red, color='r', label='Red Dot Acceleration', width=0.0035)
+plt.quiver(x_blue, y_blue, ax_blue, ay_blue, color='b',
+           label='Blue Dot Acceleration', width=0.0035)
+plt.quiver(x_red, y_red, ax_red, ay_red, color='r',
+           label='Red Dot Acceleration', width=0.0035)
 plt.xlabel('X Position (cm)')
 plt.ylabel('Y Position (cm)')
-plt.title(f'Accelerations of Blue and Red Dots with\nRadius of second mass: {radius_of_mass_2:.2f} cm')
+plt.title(
+    f'Accelerations of Blue and Red Dots with\nRadius of second mass: {radius_of_mass_2:.2f} cm')
 plt.legend()
 plt.grid(True)
 plt.axis('equal')
@@ -73,10 +80,11 @@ plt.plot(x_blue, v_blue, 'b-', label='Blue Dot Velocity Magnitude')
 plt.plot(x_red, v_red, 'r-', label='Red Dot Velocity Magnitude')
 plt.xlabel('X Position (cm)')
 plt.ylabel('Velocity Magnitude (cm/s)')
-plt.title(f'Velocity Magnitude over X Position with\nRadius of second mass: {radius_of_mass_2:.2f} cm')
+plt.title(
+    f'Velocity Magnitude over X Position with\nRadius of second mass: {radius_of_mass_2:.2f} cm')
 plt.legend()
 plt.grid(True)
-plt.show()  
+plt.show()
 
 # Calculate magnitudes of accelerations
 a_blue = np.sqrt(ax_blue**2 + ay_blue**2)
@@ -88,7 +96,8 @@ plt.plot(x_blue, a_blue, 'b-', label='Blue Dot Acceleration Magnitude')
 plt.plot(x_red, a_red, 'r-', label='Red Dot Acceleration Magnitude')
 plt.xlabel('X Position (cm)')
 plt.ylabel('Acceleration Magnitude (cm/s²)')
-plt.title(f'Acceleration Magnitude over X Position with\nRadius of second mass: {radius_of_mass_2:.2f} cm')
+plt.title(
+    f'Acceleration Magnitude over X Position with\nRadius of second mass: {radius_of_mass_2:.2f} cm')
 plt.legend()
 plt.grid(True)
 plt.show()
@@ -107,7 +116,8 @@ plt.plot(time_sliced, theta, 'b-')
 plt.ylim(-1*np.pi, 2*np.pi)  # Set y-axis range
 plt.xlabel('Time (s)')
 plt.ylabel(r'$\theta$ (radians)')
-plt.title(f'Angle $\\theta$ from the Vertical over Time with\nRadius of second mass: {radius_of_mass_2:.2f} cm')
+plt.title(
+    f'Angle $\\theta$ from the Vertical over Time with\nRadius of second mass: {radius_of_mass_2:.2f} cm')
 plt.grid(True)
 plt.show()
 
@@ -119,7 +129,8 @@ plt.figure(figsize=(10, 5))
 plt.plot(time_sliced, omega, 'r-')
 plt.xlabel('Time (s)')
 plt.ylabel(r'$\omega$ (rad/s)')
-plt.title(f'Angular Velocity $\omega$ over Time with\nRadius of second mass: {radius_of_mass_2:.2f} cm')
+plt.title(
+    f'Angular Velocity $\omega$ over Time with\nRadius of second mass: {radius_of_mass_2:.2f} cm')
 plt.grid(True)
 plt.show()
 
@@ -131,6 +142,7 @@ plt.figure(figsize=(10, 5))
 plt.plot(time_sliced, alpha, 'g-')
 plt.xlabel('Time (s)')
 plt.ylabel(r'$\alpha$ (rad/s²)')
-plt.title(f'Angular Acceleration $\\alpha$ over Time with\nRadius of second mass: {radius_of_mass_2:.2f} cm')
+plt.title(
+    f'Angular Acceleration $\\alpha$ over Time with\nRadius of second mass: {radius_of_mass_2:.2f} cm')
 plt.grid(True)
 plt.show()
