@@ -6,17 +6,17 @@ import pandas as pd
 filepath = "MaxRadiusTestData.csv"
 test_data = pd.read_csv(filepath)
 
-x_blue = np.array((test_data['Blue x Values'])) - 5
-y_blue = np.array((test_data['Blue y Values'])) - 5
+x_blue = np.array((test_data['Blue x Values']))
+y_blue = np.array((test_data['Blue y Values']))
 x_red = np.array((test_data['Red x Values']))
 y_red = np.array((test_data['Red y Values']))
 time_exp = np.array((test_data['time']))
 
-radius_of_mass_2 = np.max(y_blue) - 5
+radius_of_mass_2 = np.max(y_blue)
 
 # Define the system parameters
-m1 = 1.0   # mass of the disc (kg)
-m2 = 0.5   # mass of the attached square (kg)
+m1 = 0.02   # mass of the disc (kg)
+m2 = 0.001   # mass of the attached square (kg)
 R = 5      # radius of the disc (m)
 r = 3.39   # distance of the square from the center of the disc (m)
 g = 9.81   # acceleration due to gravity (m/s^2)
